@@ -347,7 +347,7 @@ describe('EmailDomainVerifier', () => {
       expect(res).equal(false)
     })
 
-    it('Returns true when at least one smtp server not found', async () => {
+    it('Returns true when at least one smtp server is found', async () => {
       when(verifierMock.isPortOpen(anyString(), anyNumber(), anyNumber()))
         .thenResolve(false)
       when(verifierMock.isPortOpen('host2', 587, anyNumber()))
