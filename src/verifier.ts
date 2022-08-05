@@ -2,6 +2,7 @@ import { resolveMx } from 'dns'
 import { createConnection } from 'net'
 import { EmailVerificationOptions, EnsuredEmailVerificationOptions } from './types/EmailVerificationOptions'
 import { EmailVerificationResult, EmailVerificationDetails } from './types/EmailVerificationResult'
+
 const LRU = require('lru-cache')
 
 const cache = new LRU({ max: 1000, ttl: 24 * 60 * 60 * 1000 })
@@ -62,7 +63,9 @@ const verify = async (domain: string, options: EnsuredEmailVerificationOptions):
     const result = {
       mxVerificationSucceed
     }
-    cache.set(getCacheKey(domain, options), result)
+    if (mxVerificationSucceed) {
+      cache.set(getCacheKey(domain, options), result)
+    }
     return result
   }
 
@@ -73,7 +76,9 @@ const verify = async (domain: string, options: EnsuredEmailVerificationOptions):
     mxVerificationSucceed,
     smtpVerificationSucceed
   }
-  cache.set(getCacheKey(domain, options), result)
+  if (result.mxVerificationSucceed && result.smtpVerificationSucceed) {
+    cache.set(getCacheKey(domain, options), result)
+  }
   return result
 }
 

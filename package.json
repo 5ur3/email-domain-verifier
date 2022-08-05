@@ -1,6 +1,6 @@
 {
   "name": "email-domain-verifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Verifies email domains",
   "main": "lib/index.js",
   "scripts": {
