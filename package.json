@@ -16,6 +16,7 @@
     "mail-exchange"
   ],
   "author": "Andrey Sandimirov",
+  "repository": "git://github.com/5ur3/email-domain-verifier.git",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.3.1",
