@@ -56,9 +56,10 @@ await verifyEmailDomain('mailbox@garbage.domain', { requireSmtpOrMx: true })
 * Max cache size is 1000 and ttl is 24 hours
 #### Smtp check
 * Conducted via attempting tcp connection to popular smtp ports
-* Ports list is ```[ 24, 456, 587, 2525 ]```
+* Ports list is ```[ 25, 456, 587, 2525 ]```
 * The check is successful if at least one of these ports is open on any of the mail exchange servers
 * In addition to mail exchange servers, these ports are scanned on ``` `${domain}` and `smtp.${domain}` ```
+* Most public ISP block requests to port 25, so port 25 scan might not work from your home, but should work from your server.
 #### Mx check
 * The check is successful if domain has at least one mx record
 
