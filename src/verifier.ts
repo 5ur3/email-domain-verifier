@@ -90,7 +90,7 @@ const getExchangeServers = (domain: string): Promise<string[]> => {
   return new Promise<string[]>((resolve, reject) => {
     resolveMx(domain, (err, addresses) => {
       if (err) {
-        const expectedErrors = ['ESERVFAIL', 'ENODATA']
+        const expectedErrors = ['ESERVFAIL', 'ENODATA', 'ENOTFOUND']
         if (err.code && expectedErrors.includes(err.code)) {
           return resolve([])
         }
