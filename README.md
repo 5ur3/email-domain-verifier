@@ -1,6 +1,6 @@
 # email-domain-verifier
 
-An npm package that verifies email domains via dns mx records and attempting smtp connection
+A npm package that verifies email domains via dns mx records and attempting smtp connection
 
 ## Installation
 ```bash
